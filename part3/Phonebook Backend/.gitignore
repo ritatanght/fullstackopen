@@ -22,3 +22,4 @@ yarn-error.log*
 *.rest
 .env
 mongo.js
+.eslintignore
