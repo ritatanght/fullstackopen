@@ -38,6 +38,12 @@ const App = () => {
             }, 5000);
             setNewName("");
             setNewPhone("");
+          })
+          .catch((error) => {
+            setError(error.response.data.error);
+            setTimeout(() => {
+              setError(null);
+            }, 5000);
           });
       }
     } else {
@@ -45,13 +51,21 @@ const App = () => {
         name: newName,
         number: newPhone,
       };
-      personService.create(personObject).then((returnedPerson) => {
-        setPersons(persons.concat(returnedPerson));
-        setMessage(`Added ${returnedPerson.name}`);
-        setTimeout(() => {
-          setMessage(null);
-        }, 5000);
-      });
+      personService
+        .create(personObject)
+        .then((returnedPerson) => {
+          setPersons(persons.concat(returnedPerson));
+          setMessage(`Added ${returnedPerson.name}`);
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+        })
+        .catch((error) => {
+          setError(error.response.data.error);
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+        });
       setNewName("");
       setNewPhone("");
     }
