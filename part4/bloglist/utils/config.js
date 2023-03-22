@@ -6,5 +6,6 @@ const mongoUrl =
     : process.env.MONGODB_URI;
 const PORT = 3003;
 const SECRET = process.env.SECRET;
+const ENV = process.env.NODE_ENV
 
-module.exports = { mongoUrl, PORT, SECRET };
+module.exports = { mongoUrl, PORT, SECRET, ENV };
